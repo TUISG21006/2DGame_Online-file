@@ -1,14 +1,14 @@
 # 2DGame_Online-file
-Node.jsを用いたオンラインゲーム設定ツールです。  
-アバターのサイズや操作方法、同期処理のタイミング及び同期箇所の選択が可能です。
+Node.jsを用いたオンラインゲーム設定ツールです。<br>
+アバターのサイズや操作方法、同期処理のタイミング及び同期箇所の選択が可能です。<br>
 ![none](https://user-images.githubusercontent.com/88083230/157493832-5e674127-e892-41de-865a-5723572d65f6.png)  
 ![none](https://user-images.githubusercontent.com/88083230/157494462-34cd70b2-b45a-46bc-8c20-95356f3f7fd7.png)
   
-## Requirements  
-このコードは、GUI画面をnet6.0-windows、VisualStudioに依存しておりWindowsによってのみ動作します。  
-またホストの立ち上げにnode-v12.16.1が必要です。  
-## Usage  
-設定はゲームの基礎設定を行う「ゲーム設定」とゲームのチューニングパラメータを設定する「ゲーム内設定」の2種類が設定できます。  
+## Requirements<br>
+このコードは、GUI画面をnet6.0-windows、VisualStudioに依存しておりWindowsによってのみ動作します。<br>
+またホストの立ち上げにnode-v12.16.1が必要です。<br>
+## Usage<br>
+設定はゲームの基礎設定を行う「ゲーム設定」とゲームのチューニングパラメータを設定する「ゲーム内設定」の2種類が設定できます。<br>
 ### ゲーム設定<br>
 `ユーザの使用PORT`<br>
 nodeサーバを起動した際の占領PORTを選択します<br><br>
@@ -52,6 +52,7 @@ Serverを選択した場合Clientが存在しなくとも設定が変更され�
 ジャンル1の際どの程度下に落ちやすいかを設定します<br><br>
 `ポイントアイテムの生成数`<br>
 ゲーム上のポイントアイテム生成数を設定できます<br><br>
-## Server起動後  
-Server起動後は設定したポート番号にhttp://localhost: でアクセスする事でゲームを開始できます。
+## Server起動後<br>
+Server起動後は設定したポート番号にhttp://localhost: でアクセスする事でゲームを開始できます。<br>
+Serverを終了させる場合は`^C`または`Ctrl+Z`を入力してください<br>
 

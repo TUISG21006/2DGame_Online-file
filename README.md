@@ -1,4 +1,4 @@
-# 2DGame_Online-file
+# 2DGame_Online
 Node.jsを用いたオンラインゲーム設定ツールです。<br>
 アバターのサイズや操作方法、同期処理のタイミング及び同期箇所の選択が可能です。<br>
 ![none](https://user-images.githubusercontent.com/88083230/157493832-5e674127-e892-41de-865a-5723572d65f6.png)  

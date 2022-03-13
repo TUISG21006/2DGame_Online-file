@@ -10,7 +10,7 @@ Node.jsを用いたオンラインゲーム設定ツールです。<br>
 ## Requirements<br>
 このコードは、GUI画面をnet6.0-windows、VisualStudioに依存しておりWindowsによってのみ動作します。<br>
 またホストの立ち上げにnode-v12.16.1が必要です。<br>
-## Usage<br>
+## Setup<br>
 設定はゲームの基礎設定を行う「ゲーム設定」とゲームのチューニングパラメータを設定する「ゲーム内設定」の2種類が設定できます。<br>
 ### ゲーム設定<br>
 `ユーザの使用PORT`<br>

@@ -31,17 +31,24 @@ var item_size = initData.item_size
 var jump_pow = initData.jump_pow
 var time = initData.limit_time;
 
+var rotation = initData.rotation;//回転速度
+
+var max_spead = initData.max_spead;//レース操作時最大速度
+var friction = initData.friction;//摩擦係数
+
 //ID管理用の配列
 let User = [];
 
 //座標管理用（クライアント：true）
-let flag_a = initData.Synchro_Avatar;
+let flag_a = false;
 //アイテム管理用（クライアント：true）
 let flag_b = initData.Synchro_Item;
 //時間管理用（クライアント：true）
 let flag_c = initData.Synchro_Time;
 //攻撃管理用（クライアント：true）
 let flag_d = initData.Synchro_Time;
+//完全同期（true）：不完全同期（false）
+let flag_e = true;
 
 for(var i = 0;i<initData.item;i++){
     item_list.push({"x":Math.floor(Math.random()*650+initData.sizeh),"y":Math.floor(Math.random()*290+initData.sizeh),get:false})
@@ -136,6 +143,19 @@ io.sockets.on('connection', function(socket) {
             user_list[num].left = flag.left;
             
         }
+        point_update(move(Genre,
+            user_list[num].x,
+            user_list[num].y,
+            user_list[num].angle,
+            user_list[num].up,
+            user_list[num].down,
+            user_list[num].left,
+            user_list[num].right,
+            user_list[num].jump,
+            user_list[num].acsell,
+            num),num);
+
+            io.sockets.emit('Server_to_Client',user_list); 
     });
 
 
@@ -152,12 +172,10 @@ io.sockets.on('connection', function(socket) {
     });
     
     if(!flag_b){
-        if(user_count<=0){
             var item_syn = setInterval(()=>{
                 io.sockets.emit("Client_Synchoro_item",item_list);
-                if(user_count<=0)clearInterval(item_syn);
             },60);
-        }
+        
 
     }
 
@@ -171,6 +189,14 @@ io.sockets.on('connection', function(socket) {
         counter++;
         if(counter==user_list.length){
             io.sockets.emit("DROW");
+            counter = 0;
+        }
+    })
+
+    socket.on('Heart Beat',()=>{
+        counter++;
+        if(counter==user_list.length){
+            io.sockets.emit("Server_to_Client Move");
             counter = 0;
         }
     })
@@ -367,8 +393,10 @@ if(!flag_a){
                     user_list[i].jump,
                     user_list[i].acsell,
                     i),i);
-                io.sockets.emit('Server_to_Client',user_list);    
             }
+        }
+        if(!flag_e){
+           io.sockets.emit('Server_to_Client',user_list); 
         }
     },1000/initData.max_move);
 }

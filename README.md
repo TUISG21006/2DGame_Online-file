@@ -1,4 +1,3 @@
-https://img.shields.io/npm/dw/1.3/.8
 # 2DGame_Online
 Node.jsを用いたオンラインゲーム設定ツールです。<br>
 アバターのサイズや操作方法、同期処理の同期箇所の選択を選択し共闘型のWebゲームを立ち上げる事が可能です。<br>

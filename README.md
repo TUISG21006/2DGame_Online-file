@@ -2,7 +2,7 @@
 Node.jsを用いたオンラインゲーム設定ツールです。<br>
 アバターのサイズや操作方法、同期処理の同期箇所の選択を選択し共闘型のWebゲームを立ち上げる事が可能です。<br>
 設定画面<br>
-![none](https://user-images.githubusercontent.com/88083230/163299388-c34e86ec-2fbe-4340-9ae6-d9aeaae99a5c.mp4)<br>
+![none](https://user-images.githubusercontent.com/88083230/163299854-4e5e4199-73db-4ade-b8cc-c8645f30f415.gif)<br>
 実行画面<br>
 ![none](https://user-images.githubusercontent.com/88083230/157494462-34cd70b2-b45a-46bc-8c20-95356f3f7fd7.png)
 

@@ -1,17 +1,29 @@
 # 2DGame_Online
 Node.jsを用いたオンラインゲーム設定ツールです。<br>
 アバターのサイズや操作方法、同期処理の同期箇所の選択を選択し共闘型のWebゲームを立ち上げる事が可能です。<br>
-設定画面<br>
+# DEMO
 ![none](https://user-images.githubusercontent.com/88083230/163299854-4e5e4199-73db-4ade-b8cc-c8645f30f415.gif)<br>
-実行画面<br>
-![none](https://user-images.githubusercontent.com/88083230/157494462-34cd70b2-b45a-46bc-8c20-95356f3f7fd7.png)
+
+# Features
+windows form applicationを用いてGUIで共闘型Webゲームを開発できます。<br>
+また同期箇所や同期処理による通信遅延の影響を確認できます。<br>
+# Requirement
+* .Net 6.0
+* Node.js v12.16.1
+
+# Installation
+.net6.0
+```bash
+https://dotnet.microsoft.com/ja-jp/download/dotnet/6.0
+```
+Node.js v12.16.1
+```bash
+https://dotnet.microsoft.com/ja-jp/download/dotnet/6.0
+```
 
 ## Startup method<br>
 2DGame_Online.exeを起動し設定を行ってください<br>
 
-## Requirements<br>
-このコードは、GUI画面をnet6.0-windows、VisualStudioに依存しておりWindowsによってのみ動作します。<br>
-またホストの立ち上げにnode-v12.16.1が必要です。<br>
 ## Setup<br>
 設定はゲームの基礎設定を行う「ゲーム設定」とゲームのチューニングパラメータを設定する「ゲーム内設定」の2種類が設定できます。<br>
 ### ゲーム設定<br>

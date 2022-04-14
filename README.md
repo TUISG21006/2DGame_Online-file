@@ -1,6 +1,3 @@
-[![NPM Version][npm-version-image]][npm-url]
-[![NPM Downloads][npm-downloads-image]][npm-url]
-[![Node.js Version][node-version-image]][node-version-url]
 # 2DGame_Online
 Node.jsを用いたオンラインゲーム設定ツールです。<br>
 アバターのサイズや操作方法、同期処理の同期箇所の選択を選択し共闘型のWebゲームを立ち上げる事が可能です。<br>

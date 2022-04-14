@@ -21,6 +21,7 @@ Node.js v12.16.1
 https://dotnet.microsoft.com/ja-jp/download/dotnet/6.0
 ```
 
+# Usage
 ## Startup method<br>
 2DGame_Online.exeを起動し設定を行ってください<br>
 
@@ -75,4 +76,9 @@ Serverを選択した場合Clientが存在しなくとも設定が変更され�
 ## End Method<br>
 Server起動後は設定したポート番号にhttp://localhost: でアクセスする事でゲームを開始できます。<br>
 Serverを終了させる場合は`^C`または`Ctrl+Z`を入力してください<br>
+
+# Author
+* 塩津　薫
+* 東京情報大学大学院
+* g21006sk@edu,tuis.ac.jp
 

@@ -82,3 +82,5 @@ Serverを終了させる場合は`^C`または`Ctrl+Z`を入力してくださ�
 * 東京情報大学大学院
 * g21006sk@edu,tuis.ac.jp
 
+# License
+2D_Online is Confidential.

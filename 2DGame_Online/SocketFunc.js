@@ -63,7 +63,7 @@ socket.on('disconnect',(num)=>{
     }
 })
 
-//==============[]==============
+//==============[簡単な攻撃処理と被弾処理]==============
 socket.on('AttackData_push',(Data)=>{
     AttackData.push(Data);
 });

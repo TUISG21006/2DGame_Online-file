@@ -42,6 +42,7 @@ let drow = function(map,avater=[],item=[],atack=[],init){
     for(var i = 0;i < avater.length;i++){
         if(avater[i] != undefined){
             //アバタの描画
+            
             chara(avater[i].x,avater[i].y,avater[i].angle);
             //HPの描画（図形）
             ctx.fillStyle = "#FF0000";
@@ -50,7 +51,7 @@ let drow = function(map,avater=[],item=[],atack=[],init){
             ctx.fillStyle = "#000000";
             ctx.fillText(avater[i].hp,avater[i].x ,avater[i].y - DrowHp)
 
-            //HPの描画（文字）
+            //scoreの描画（文字）
             ctx.fillStyle = "#000000";
             ctx.fillText(avater[i].score,avater[i].x ,avater[i].y - DrowHp*2)
         }
@@ -115,7 +116,7 @@ let chara_set = function(init){
     HightCenter = init.sizeh / 2;
 
     //描画設定が四角形の時
-    if(Init.ava_type == DrowRect){
+    if(init.ava_type == 0){
         ava = function(x,y,angle){
             //レースゲーム時のみ画像を回転させています。
             if(Init.Genre != RaceGame){
@@ -135,7 +136,7 @@ let chara_set = function(init){
     else{
         //画像の読み込み
         var newImage = new Image();
-        newImage.src = Init.ava_type;
+        newImage.src = "/image/"+Init.ava_type;
         ava = function(x,y,angle){
             if(Init.Genre == RaceGame){
                 //座標の記録
@@ -146,7 +147,7 @@ let chara_set = function(init){
                 //アバタ以外の逆回転
                 ctx.translate(-x - WideCenter,-y - HightCenter);
             }
-            ctx.strokeRect(x,y,init.sizew,init.sizeh);
+            ctx.drawImage(newImage, x, y ,init.sizew,init.sizeh)
             ctx.restore();
         }
     }

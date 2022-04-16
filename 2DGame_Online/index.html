@@ -29,7 +29,7 @@ let chara,WideCenter,HightCenter;
 let Client = false;
 let Server = true;
 
-//入室処理 Data:AvaterData
+//入室処理（Data:アバター配列）
 socket.on('Enter',(Data,map,init,item)=>{
     AvaterData = Data;          //ユーザ情報の読み込み
     Map = map;                  //地形情報の読み込み
@@ -40,9 +40,6 @@ socket.on('Enter',(Data,map,init,item)=>{
     Time = Init.limit_time;
 
     //================[TEST SPACE]======================
-    Init.Synchro_Avatar = Server
-    Init.Synchro_Item = Server
-
     AtacSpeed = 3;
     //==================================================
 

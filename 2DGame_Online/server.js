@@ -15,11 +15,10 @@ let AvaterData = [];        //アバタオブジェクトを格納する配列
 let Time = Init.limit_time; //ゲーム内時間
 let ItemData = [];          //アイテムオブジェクトを格納
 let MoveFuncList = [];      //移動ルーチンを格納する
-//今後追加予定完全同期
-let PerfectSynchron = true; //完全同期：true　非完全同期:false
+let PerfectSynchron = Init.Perfect_Synchron; //完全同期：true　非完全同期:false
 
 //アイテムの配置（ランダム生成）
-for(var i = 0;i<0;i++){
+for(var i = 0;i < Init.item;i++){
     ItemData.push({"x":Math.floor(Math.random()*Init.wide+Init.sizeh),"y":Math.floor(Math.random()*Init.hight+Init.sizeh),get:false})
 }
 
@@ -44,9 +43,6 @@ let UserAdd = function(id)
 //JSON内のBoolの内訳
 let Client = false;
 let Server = true;
-Init.fps = 60;
-Init.Synchro_Avatar = Server
-Init.Synchro_Item = Server
 
 //====================[相互通信内での処理(主に同期処理)]====================================
 io.sockets.on('connection', function(socket)
@@ -65,7 +61,8 @@ io.sockets.on('connection', function(socket)
         if(AvaterData.findIndex((e) => e.id === socket.id) != -1
         ||AvaterData[num].beat != undefined)
         {
-            if(!AvaterData[num].beat)
+            if(PerfectSynchron && AvaterData[num].beat){}
+            else
             {
                 //クライアント同期である場合全クライアントに入力情報を送信
                 if(Init.Synchro_Avatar == Client)
@@ -79,10 +76,7 @@ io.sockets.on('connection', function(socket)
                 AvaterData[num].right = Data[num].right;
 
                 //完全同期である場合次回受信時に他クライアントが未受信なら非更新
-                if(PerfectSynchron)
-                {
-                    AvaterData[num].beat = true;
-                }
+                AvaterData[num].beat = true;
             }
             
             //全クライアントが受信済みであるなら更新可能状態に変更

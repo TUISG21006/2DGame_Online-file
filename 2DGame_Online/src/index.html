@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>テスト</title>
+
+<canvas id="view" width = "720px" height = "480px"></canvas>
+<script src="socket.io/socket.io.js"></script>
+<script src="js/Title.js"></script>
+<script src="js/Result.js"></script>
+<script src="js/Collision.js"></script>
+<script src="js/MainFunc.js"></script>
+<script src="js/MoveFunc.js"></script>
+<script src="js/SocketFunc.js"></script>
+<script src="js/2Ddrow.js"></script>
+<script src="js/3Ddrow.js"></script>
+<script src="js/Attack.js"></script>
+<script src="/libs/three.js"></script>
+<script src="/libs/three.min.js"></script>
+</head>
+<body>
+<div id="canvas_output" style="float:left"></div>
+<!-- Div which will hold the Output -->
+<div id="WebGL-output">
+</div>
+<script type="text/javascript">
+//ドキュメント要素の取得
+var canvas = document.getElementById('view');
+//canvasに描画するコンテキストを取得
+var ctx = canvas.getContext('2d');
+
+let AvaterData = [];
+let Time;
+let ItemData = [];
+let My_num,Init,Map;
+
+//描画するHPのサイズ
+const DrowHp = 10;
+//アバタ描画のサイズと雛形
+let chara,WideCenter,HightCenter;
+
+//if文のマジナン対策(同期箇所判定)
+let Client = false;
+let Server = true;
+let drowD,AttackChoice;
+
+//ゲーム終了時の処理
+let GameOver = function(){
+    Result();
+}
+
+//攻撃被弾時の処理
+socket.on('AttackData_splice',(Data,num)=>{
+    AttackData.splice(Data,1);
+    AvaterData[num].hp--;
+});
+
+//メイン関数
+window.onload = ()=>{
+    //================[TEST SPACE]======================
+
+    //==================================================
+    Title();
+};
+
+//ゲーム開始処理
+let GameStert = function(){
+    socket.emit('new');
+}
+</script>
+</body>
+</html>

@@ -12,14 +12,16 @@ var reason = {
 } 
 
 let Result = function(){
-    if(drowD == 2){
+    if(Init.drowD == 2){
+        ctx.clearRect(0, 0,window.innerWidth,window.innerHeight);
+        ctx.beginPath();
     }
     else{
         scene.remove( scene );
         scene = []
-        canvas.width = Init.wide;  // サイズ変更
-        canvas.height = Init.hight; // サイズ変更
-        ctx.clearRect(0, 0,Init.wide,Init.hight);
+        canvas.width = window.innerWidth;  // サイズ変更
+        canvas.height = window.innerHeight; // サイズ変更
+        ctx.clearRect(0, 0,window.innerWidth,window.innerHeight);
         ctx.beginPath();
     }
     alert("GAME OVER");
@@ -35,10 +37,12 @@ let Result = function(){
 }
 
 let ResultUpdate = function(){
-    console.log(Rank);
-    ctx.clearRect(0, 0,Init.wide,Init.hight);
+    ctx.clearRect(0, 0,window.innerWidth,window.innerHeight);
     ctx.beginPath();
-    
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillRect(0 ,0,window.innerWidth,window.innerHeight);
+        //タイトル描画
+        ctx.fillStyle = "black";
     //画面幅表示
     ctx.strokeRect(0, 0,canvas.width,canvas.height);
 
@@ -50,11 +54,13 @@ let ResultUpdate = function(){
         (canvas.height * TitleFont.PointY) + (canvas.height * TitleFont.size / 2),
         canvas.width * TitleFont.size
     )
-    if(Time <= 0){
+    //終了条件によって表示を変える
+    if(Time <= 0){//時間切れの際
         reason.Font = "Time out"
-    }else{
+    }else{//HP切れの際
         reason.Font = "HP out"
     }
+    //終了条件の描画
     ctx.font = canvas.height * TitleFont.size/2 + "px " + Font[Math.floor(Math.random()*Font.length)];
     ctx.fillText(reason.Font,
         (canvas.width * TitleFont.PointX) - (canvas.width * TitleFont.size/2),
@@ -62,8 +68,15 @@ let ResultUpdate = function(){
         canvas.width * TitleFont.size
     )
 
+    //終了時体力が0なら生存数の順位
+    Rank = (AvaterData[My_num].hp <= 0 ? AvaterData.length : Rank)
+    ctx.fillText("Group Ranking:"+Rank,
+        (canvas.width * TitleFont.PointX) - (canvas.width * TitleFont.size/2),
+        (canvas.height * TitleFont.PointY) + (canvas.height * TitleFont.size*1.5),
+        canvas.width * TitleFont.size
+    )
 
-    //Join描画
+    //ボタンの追加
     ctx.font = ButtonPoint.size + "px 'メイリオ'";
     ctx.fillText("Back to Title",
         ButtonPoint.PointX,

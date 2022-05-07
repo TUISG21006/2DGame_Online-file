@@ -24,18 +24,14 @@ var ButtonPoint = {
 
 //タイトルの表示
 let Title = function(){
-    //画面のリフレッシュ（10fps)
-    TitleLoop = setInterval(TitlteUpdate,100);
-    
-    //初期設定の受信
-    socket.emit('Access');
-    
-    //Joinボタン追加
-     window.addEventListener('click',BottunFunc, false);
+
+
+
 }
 
 //画面更新
 let TitlteUpdate = function(){
+
     ctx.clearRect(0, 0,canvas.width,canvas.height);
     ctx.beginPath();
     
@@ -76,5 +72,7 @@ let BottunFunc = function(e){
 //JoinButtonクリック時
 function ButtonClick(){
     clearInterval(TitleLoop);
+    ctx.font = "'serif'";
+
     GameStert();
 } 

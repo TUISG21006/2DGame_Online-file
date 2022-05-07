@@ -1,13 +1,13 @@
 //画面描画用関数（流用性はかなり低い:変数ava_x,ava_y,angle）
 let drow = function(map,avater=[],item=[],atack=[],init){
     //画面削除
-    ctx.clearRect(0, 0,init.wide,init.hight);
+    ctx.clearRect(0, 0,window.innerWidth,window.innerHeight);
     ctx.beginPath();
     
+    //アバター描画に関する処理
     for(var i = 0;i < avater.length;i++){
         if(avater[i] != undefined){
             //アバタの描画
-            
             chara(avater[i].x,avater[i].y,avater[i].angle);
             //HPの描画（図形）
             ctx.fillStyle = "#FF0000";
@@ -22,8 +22,9 @@ let drow = function(map,avater=[],item=[],atack=[],init){
         }
     }
 
-    ctx.fillStyle = "#000000";
+
     //ステージブロックの描画
+    ctx.fillStyle = "#000000";//色を黒く設定
     for(var i = 0;i < map.length;i++){
         for(let j = 0;j < map[i].length;j++){
             if(map[i][j] == 1)
@@ -32,22 +33,26 @@ let drow = function(map,avater=[],item=[],atack=[],init){
     }
 
     //アイテムオブジェクトの描画
-    ctx.fillStyle = "#FFA500";
+    ctx.fillStyle = "#FFA500";//色を黄色に設定
     for(var j = 0;j<item.length;j++){
         if(item[j].get == false){
             ctx.fillRect(item[j].x,item[j].y,Init.item_size,Init.item_size);
         }
     }
+
     //攻撃の描画
-    ctx.fillStyle = "#FFF000";
+    ctx.fillStyle = "#FFF000";//色を黄色に背定
     for(var i = 0;i < AttackData.length;i++){
-        console.log(AttackData[i].x);
         ctx.fillRect(AttackData[i].x,AttackData[i].y,Init.bullet_size,Init.bullet_size);
     }
 
     //時間の描画
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText(Time,0,0);
+    
+    //TIMEの描画（文字）
+    ctx.fillStyle = "#000000";
+    ctx.fillText("Time:" + Time .toFixed(3), HPDrawPoint.x , HPDrawPoint.y - DrowHp*2);
 }
 
 //自キャラ登録用関数（アバタの画像、サイズ横、サイズ縦、初期位置x、初期位置y）

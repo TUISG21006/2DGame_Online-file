@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>テスト</title>
+<title>2DGame Online =Client=</title>
 
-<canvas id="view" width = "720px" height = "480px"></canvas>
 <script src="socket.io/socket.io.js"></script>
 <script src="js/Title.js"></script>
 <script src="js/Result.js"></script>
@@ -17,16 +16,22 @@
 <script src="/libs/three.js"></script>
 <script src="/libs/three.min.js"></script>
 </head>
+
 <body>
-<div id="canvas_output" style="float:left"></div>
+<!-- canvasを格納するiDv -->
+<div id="canvas-output" style="float:left"></div>
 <!-- Div which will hold the Output -->
-<div id="WebGL-output">
-</div>
+<div id="WebGL-output"></div>
 <script type="text/javascript">
 //ドキュメント要素の取得
-var canvas = document.getElementById('view');
-//canvasに描画するコンテキストを取得
-var ctx = canvas.getContext('2d');
+var canvas = document.createElement("canvas");
+/*width,hightに関しては本来画面比率に準じた設定をしたい
+　なおcanvasをThree.jsに受け渡す場合画面の下から設定となる*/
+canvas.setAttribute("width",window.innerWidth);
+canvas.setAttribute("height",window.innerHeight);
+canvas.setAttribute("style", "position: absolute; x:0; y:0; bottom: 0px");
+document.getElementById('canvas-output').appendChild(canvas);
+var ctx = canvas.getContext("2d");
 
 let AvaterData = [];
 let Time;
@@ -53,12 +58,10 @@ socket.on('AttackData_splice',(Data,num)=>{
     AttackData.splice(Data,1);
     AvaterData[num].hp--;
 });
-
 //メイン関数
 window.onload = ()=>{
-    //================[TEST SPACE]======================
-
-    //==================================================
+    //初期設定の受信
+    socket.emit('Access');
     Title();
 };
 

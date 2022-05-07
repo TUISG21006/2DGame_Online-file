@@ -190,3 +190,11 @@ socket.on('AttackData_push',(Data)=>{
     AttackData.push(Data);
 });
 
+
+socket.on('Access',(init)=>{
+    Init = init;
+    //画面のリフレッシュ（10fps)
+    TitleLoop = setInterval(TitlteUpdate,100);
+    //Joinボタン追加
+    window.addEventListener('click',BottunFunc, false);
+})

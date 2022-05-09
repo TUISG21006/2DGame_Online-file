@@ -20,7 +20,6 @@ Node.js v12.16.1
 ```bash
 https://dotnet.microsoft.com/ja-jp/download/dotnet/6.0
 ```
-
 # Usage
 ## Startup method<br>
 2DGame_Online.exeを起動し設定を行ってください<br>

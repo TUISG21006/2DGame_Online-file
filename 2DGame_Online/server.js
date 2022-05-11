@@ -48,7 +48,12 @@ let Server = true;
 //====================[相互通信内での処理(主に同期処理)]====================================
 io.sockets.on('connection', function(socket)
 {
-    console.log(socket.id);
+    //タイトルの表示（アクセスされた）
+    socket.on('Access',()=>{
+        socket.emit('Access',Init)
+    })
+    
+    //ゲームの開始
     socket.on('new',()=>
     {
          //入室処理
@@ -175,6 +180,9 @@ let ServerMove = setInterval (()=>{
 //サーバ内時間管理処理（クライアント同期の際はclearされる）
 let ServerTime = setInterval (()=>{
     if(Init.Synchro_Time == Client)clearInterval(ServerTime);
+    Time = (Time < 0 ?  0 : Time - 1/Init.fps);
+    Time = (AvaterData.length < 0 ?  Init.Time : Time);
+    io.sockets.emit('Synchronize_Time',Time);
 },1000/Init.fps);
 
 

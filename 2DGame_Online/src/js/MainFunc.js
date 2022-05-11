@@ -30,4 +30,7 @@ let move = function(ava,num){
     return Temp;
 }
 
-
+//時間の進行
+let Clock = function(num){
+    Time = (Time < 0 || AvaterData[My_num].hp <= 0 ?  0 : Time - num);
+}

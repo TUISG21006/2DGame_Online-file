@@ -23,11 +23,7 @@ var ButtonPoint = {
 } 
 
 //タイトルの表示
-let Title = function(){
-
-
-
-}
+let Title = function(){}
 
 //画面更新
 let TitlteUpdate = function(){

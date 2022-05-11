@@ -36,6 +36,11 @@ socket.on('Enter',(Data,map,init,item)=>{
             }
         }
 
+        //時間の進行(クライアント進行の設定デノミ)
+        if(Init.Synchro_Time == Client){
+            Clock(1/Init.fps);
+        }
+
         //ゲーム終了時の処理(Intervalのclearがメイン)
         if(AvaterData[My_num].hp <= 0||Time <= 0){
             clearInterval(main);
@@ -44,10 +49,6 @@ socket.on('Enter',(Data,map,init,item)=>{
             clearInterval(DrowRefresh);
             GameOver();
         }
-
-        //時間の進行(改修予定)
-        Time -= 1/Init.fps;
-        if(Time<0)Time = 0;
     },1000/Init.fps);
 
     //簡易実装番攻撃処理
@@ -191,6 +192,7 @@ socket.on('AttackData_push',(Data)=>{
 });
 
 
+//タイトル表示
 socket.on('Access',(init)=>{
     Init = init;
     //画面のリフレッシュ（10fps)
